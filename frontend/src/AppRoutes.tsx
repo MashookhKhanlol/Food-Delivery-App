@@ -1,6 +1,6 @@
 import React from 'react'
 import { Routes, Route, Navigate } from 'react-router-dom'
-import Layout from './layouts/layout'
+import Layout from './layouts/Layout'
 
 function AppRoutes() {
   return (
