@@ -1,5 +1,7 @@
 
 import Header from "@/components/Header";
+import Hero from "@/components/Hero";
+import Footer from "@/pages/Footer";
 
 
 type Props = {
@@ -11,8 +13,10 @@ const Layout = ({ children }: Props) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="container mx-auto flex-1 py-10">{children}</div>
+      <Hero/>
       
+      <div className="container mx-auto flex-1 py-10">{children}</div>
+      <Footer/>
     </div>
   );
 };
