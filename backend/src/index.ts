@@ -2,6 +2,7 @@ import express, {Request, Response} from 'express'
 import 'dotenv/config'
 import cors from 'cors'
 import mongoose from 'mongoose'
+import myUserRoute from './routes/myUserRoute'
 
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string).then(()=>{
     console.log("Connected to db")
@@ -10,6 +11,8 @@ mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string).then(()=>{
 const app = express();
 app.use(express.json())
 app.use(cors())
+
+app.use("/api/my/user",myUserRoute)
 
 app.get('/test' , (req : Request , res : Response)=>{
     res.json({message : "Hello ! "})
