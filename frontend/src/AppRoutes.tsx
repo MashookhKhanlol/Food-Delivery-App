@@ -4,13 +4,17 @@ import Layout from './layouts/Layout'
 import Homepage from './pages/Homepage'
 import AuthCallbackPage from './pages/AuthCallbackPage'
 import UserProfilePage from './pages/UserProfilePage'
+import ProtectedRoute from './auth/ProtectedRoute'
 
 function AppRoutes() {
   return (
     <Routes>
         <Route path="/" element={<Layout showHero><Homepage/></Layout>}/>
         <Route path="/auth-callback" element={<AuthCallbackPage/>}/>
-        <Route path="/user-profile" element={<Layout showHero= {false}><UserProfilePage/></Layout>}/>
+        <Route element={<ProtectedRoute/>}>
+          <Route path="/user-profile" element={<Layout showHero= {false}><UserProfilePage/></Layout>}/>
+        </Route>
+        
         <Route path="*" element={<Navigate to="/"/>}/>
     </Routes>
   )
