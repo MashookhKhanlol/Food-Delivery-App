@@ -1,16 +1,18 @@
 import { useForm } from 'react-hook-form';
 import {z} from 'zod'
 import {zodResolver} from '@hookform/resolvers/zod'
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import LoadingButton from '@/components/LoadingButton';
 import { Button } from '@/components/ui/button';
+import { User } from '@/types';
+import { useEffect } from 'react';
 
 
 const formSchema = z.object({
     email : z.string().optional(),
     name : z.string().min(1,'name is required'),
-    addressline : z.string().min(1,'address line is required'),
+    addressLine : z.string().min(1,'address line is required'),
     city : z.string().min(1,'city is required'),
     country : z.string().min(1,'country is required'),
 })
@@ -18,14 +20,20 @@ const formSchema = z.object({
 type UserFormData = z.infer<typeof formSchema>;
 
 type Props = {
-  onSae : (userProfileData : UserFormData)=> void;
-  isLoading : boolean;
+    currentUser : User;
+    onSave : (userProfileData : UserFormData)=> void;
+    isLoading : boolean;
 }
 
-const UserProfileForm = ({onSave , isLoading}: Props) => {
+const UserProfileForm = ({onSave , isLoading ,currentUser}: Props) => {
   const form = useForm<UserFormData>({
     resolver : zodResolver(formSchema),
+    defaultValues : currentUser,
   })
+
+  useEffect(()=>{
+    form.reset(currentUser)
+  },[currentUser, form])
 
   return(
     <Form {...form}>
@@ -50,39 +58,44 @@ const UserProfileForm = ({onSave , isLoading}: Props) => {
                 <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                        <Input { ...field} disabled className="bg-white "/>
+                        <Input { ...field}  className="bg-white "/>
                     </FormControl>
+                    <FormMessage/>
                 </FormItem>
+                
             )}
             />
 
             <div className="flex flex-col md:flex-row gap-4">
-                <FormField control={form.control} name='addressline' render={({field})=>(
-                    <FormItem>
+                <FormField control={form.control} name='addressLine' render={({field})=>(
+                    <FormItem className='flex-1'>
                         <FormLabel>Address Line</FormLabel>
                         <FormControl>
-                            <Input { ...field} disabled className="bg-white "/>
+                            <Input { ...field}  className="bg-white "/>
                         </FormControl>
+                        <FormMessage/>
                     </FormItem>
                 )}
                 />
 
                 <FormField control={form.control} name='city' render={({field})=>(
-                    <FormItem>
+                    <FormItem className="flex-1">
                         <FormLabel>City</FormLabel>
                         <FormControl>
-                            <Input { ...field} disabled className="bg-white "/>
+                            <Input { ...field}  className="bg-white "/>
                         </FormControl>
+                        <FormMessage/>
                     </FormItem>
                 )}
                 />
 
                 <FormField control={form.control} name='country' render={({field})=>(
-                    <FormItem>
+                    <FormItem className='flex-1'>
                         <FormLabel>Country</FormLabel>
                         <FormControl>
-                            <Input { ...field} disabled className="bg-white "/>
+                            <Input { ...field}  className="bg-white "/>
                         </FormControl>
+                        <FormMessage/>
                     </FormItem>
                 )}
                 />

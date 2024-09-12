@@ -22,7 +22,7 @@ const createCurrentUser = async (req: Request, res: Response) => {
 
   const updateCurrentUser = async(req: Request , res : Response)=>{
     try {
-      const {name , addressline1 , country , city} = req.body;
+      const {name , addressLine , country , city} = req.body;
       const user = await User.findById(req.userId);
 
       if(!user){
@@ -30,7 +30,7 @@ const createCurrentUser = async (req: Request, res: Response) => {
       }
 
       user.name = name ; 
-      user.addressLine = addressline1;
+      user.addressLine = addressLine;
       user.city = city 
       user.country = country
 
@@ -44,9 +44,24 @@ const createCurrentUser = async (req: Request, res: Response) => {
     }
   }
 
+  const getCurrentUser = async(req : Request , res : Response)=>{
+    try {
+      const currentUser = await User.findOne({_id : req.userId})
+      if(!currentUser){
+        return res.status(404).json({message : "User not found"})
+      }
+
+      res.json(currentUser)
+    } catch (error) {
+      console.log(error);
+      res.status(500).json({message : "Something went wrong"})
+    }
+  }
+
 
 
 export default {
     createCurrentUser,
-    updateCurrentUser
+    updateCurrentUser,
+    getCurrentUser
 }
