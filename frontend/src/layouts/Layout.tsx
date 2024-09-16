@@ -15,7 +15,7 @@ const Layout = ({ children, showHero = false }: Props) => {
       <Header />
 
       {showHero && <Hero/>}
-      <Hero/>
+      
       
       <div className="container mx-auto flex-1 py-10">{children}</div>
       <Footer/>
