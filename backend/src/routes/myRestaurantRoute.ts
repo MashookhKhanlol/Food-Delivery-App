@@ -15,6 +15,14 @@ const upload = multer({
         fileSize : 5*1024*1024
     }
 })
+
+router.get(
+    "/",
+    jwtCheck,
+    jwtParse,
+    MyRestaurantContoller.getMyRestaurant
+)
+
 router.post(
     "/",
     upload.single("imageFile"),
