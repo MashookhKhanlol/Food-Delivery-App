@@ -18,7 +18,14 @@ const searchRestaurant = async (req: Request , res: Response)=>{
         const cityCheck = await Restaurant.countDocuments(query)
 
         if(cityCheck === 0){
-            return res.status(400).json([])
+            return res.status(400).json({
+                data: [],
+                pagination : {
+                    total : 0,
+                    page : 1,
+                    pages : 1
+                }
+            })
         }
 
         if(selectedCuisines){
