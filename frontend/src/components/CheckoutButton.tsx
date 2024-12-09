@@ -36,7 +36,7 @@ const CheckoutButton = ({ onCheckout, disabled, isLoading }: Props) => {
     </Button>
   }
 
-  if(isAuthLoading || !currentUser){
+  if(isAuthLoading || !currentUser  || isLoading){
     return <LoadingButton/>
   }
 

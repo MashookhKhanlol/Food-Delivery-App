@@ -6,7 +6,7 @@ import myUserRoute from './routes/myUserRoute'
 import {v2 as cloudinary} from 'cloudinary'
 import myRestaurantRoute from './routes/myRestaurantRoute'
 import restaurantRoute from './routes/restaurantRoute'
-
+import orderRoute from './routes/orderRoute'
 mongoose.connect(process.env.MONGODB_CONNECTION_STRING as string).then(()=>{
     console.log("Connected to db")
 })
@@ -21,10 +21,12 @@ const app = express();
 app.use(express.json())
 app.use(cors())
 
+app.use("/api/order/checkout/webhook",express.raw({type : '*/*'}))
+
 app.use("/api/my/user",myUserRoute)
 app.use("/api/my/restaurant",myRestaurantRoute)
 app.use("/api/restaurant", restaurantRoute)
-
+app.use('/api/order',orderRoute)
 app.get('/test' , (req : Request , res : Response)=>{
     res.json({message : "Hello ! "})
 })
