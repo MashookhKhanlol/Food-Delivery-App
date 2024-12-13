@@ -65,12 +65,7 @@ const OrderItemCard = ({ order }: Props) => {
             Time:
             <span className="ml-2 font-normal">{getTime()}</span>
           </div>
-          <div>
-            Total Cost:
-            <span className="ml-2 font-normal">
-              £{(order.totalAmount / 100).toFixed(2)}
-            </span>
-          </div>
+          
         </CardTitle>
         <Separator />
       </CardHeader>

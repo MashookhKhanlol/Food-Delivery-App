@@ -19,7 +19,7 @@ const Homepage = () => {
             <span className='text-xl'>Food is just a click away!</span>
             <SearchBar placeHolder='Search by city or town ' onSubmit={handleSearchSubmit} searchQuery={''}/>
         </div>
-        <div className="grid md:grid-cols-2 gap-5">
+        {/* <div className="grid md:grid-cols-2 gap-5">
             <img src={landingimage}/>
             <div className="flex flex-col items-center justify-center gap-4 text-center">
                 <span className="font-bold text-3xl tracking-lighter">
@@ -30,7 +30,7 @@ const Homepage = () => {
                 </span>
                 <img src={appDownloadImage}/>
             </div>
-        </div>
+        </div> */}
     </div>
   )
 }
