@@ -26,8 +26,7 @@ MealDash is a modern food delivery web application designed to provide users wit
 ## Technologies Used  
 - **Frontend**: [React.js](https://reactjs.org/)  
 - **Backend**: [Node.js](https://nodejs.org/) and [Express.js](https://expressjs.com/)  
-- **Database**: [MongoDB](https://www.mongodb.com/)  
-- **Real-Time Updates**: [Socket.IO](https://socket.io/)  
+- **Database**: [MongoDB](https://www.mongodb.com/) 
 - **Authentication**: [Auth0](https://auth0.com/)  
 - **UI Framework**: [ShadCN](https://shadcn.dev/)  
 
