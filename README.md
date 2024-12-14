@@ -36,7 +36,7 @@ Follow these steps to set up the MealDash application locally:
 
 ```bash  
 # Clone the repository  
-git clone https://github.com/yourusername/mealdash.git  
+git clone https://github.com/MashookhKhanlol/Food-Delivery-App.git
 
 # Navigate to the project directory  
 cd mealdash  
