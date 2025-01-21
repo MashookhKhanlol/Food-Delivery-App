@@ -44,5 +44,4 @@ const ManageRestaurantPage = () => {
     </Tabs>
   );
 };
-
 export default ManageRestaurantPage;

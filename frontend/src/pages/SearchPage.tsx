@@ -24,9 +24,7 @@ const SearchPage = () => {
     sortOption : ""
   })
 
-
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
-
 
   const {results } = useSearchRestaurants(searchState , city)
 
@@ -72,7 +70,6 @@ const SearchPage = () => {
   if(!results?.data || !city){
     return <span>No results found.</span>
   }
-
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5">
